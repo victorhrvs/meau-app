@@ -10,6 +10,7 @@ npm-debug.*
 *.orig.*
 web-build/
 yarn.lock
+.firebase/*
 
 # macOS
 .DS_Store
