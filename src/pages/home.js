@@ -38,26 +38,10 @@ const Login = ({ navigation }) => {
 			
 
 			<View style={styles.box}>
-				<Input
-					labelStyle={styles.label}
-					inputStyle={styles.input}
-					label="Nick"
-					placeholder="Email" 
-				/>
+				<Text>Home</Text>
+        </View>
 
-				<Input
-					labelStyle={styles.label}
-					inputStyle={styles.input}
-					label="Senha"
-					placeholder="Senha" 
-				/>
 
-        <Button
-          style={styles.btn} 
-          title="Press me"
-          onPress={() => navigation.navigate("Home")}
-        />
-			</View>
 
 		</View>
 	)
