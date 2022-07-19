@@ -17,6 +17,16 @@ const styles = StyleSheet.create({
     borderRadius: 5,
     borderColor: "#AAAAAA",
   },
+  container2: {
+    height: 550,
+    width: 300,
+    backgroundColor: "#FFFFFF",
+    justifyContent: "center",
+    padding: 16,
+    borderWidth: 1,
+    borderRadius: 5,
+    borderColor: "#AAAAAA",
+  },
   box: {
     borderColor: "#AAAAAA",
     backgroundColor: "#FFFFFF",
@@ -29,6 +39,9 @@ const styles = StyleSheet.create({
   },
   text: {
     fontSize: 16,
+  },
+  h1: {
+    fontSize: 24,
   },
   btn: {
     marginBottom: 16,

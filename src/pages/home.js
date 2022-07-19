@@ -1,5 +1,7 @@
 import React from "react";
 import { View, Text, Button, StyleSheet  } from "react-native";
+import { onAuthStateChanged, signOut } from "firebase/auth";
+import { auth } from "../../firebase.config.js";
 
 import Input from '../components/input';
 
@@ -33,15 +35,28 @@ const styles = StyleSheet.create({
 })
 
 const Login = ({ navigation }) => {
+	const [user, setUser] = React.useState({});	
+
+	onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  });
+
+	const logout = async () => {
+    await signOut(auth);
+  };
+
 	return (
 		<View style={styles.container}>
-			
-
 			<View style={styles.box}>
 				<Text>Home</Text>
+				<Text style={styles.text}>{user?.email}</Text>
+				<Button
+						style={styles.btn} 
+						title="Sair"
+						onPress={logout}
+					/>
         </View>
-
-
+			
 
 		</View>
 	)

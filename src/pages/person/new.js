@@ -18,6 +18,7 @@ const Login = ({ navigation }) => {
       );
 			console.log(email);
       console.log(user);
+			navigation.navigate("Home");
     } catch (error) {
 			console.log(email);
       console.log(error.message);

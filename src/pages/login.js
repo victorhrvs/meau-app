@@ -1,7 +1,76 @@
 import React from "react";
-import { View, Text, Button, StyleSheet  } from "react-native";
+import { View, Text, Button, StyleSheet, TextInput } from "react-native";
+import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
+import { auth } from "../../firebase.config.js";
+import { useState } from "react";
 
-import Input from '../components/input';
+
+const Login = ({ navigation }) => {
+
+	const [email, onChangeEmail] = React.useState("");
+	const [pass, onChangePass] = React.useState(null);
+	const [user, setUser] = useState({});
+
+	onAuthStateChanged(auth, (currentUser) => {
+    setUser(currentUser);
+  });
+
+	const login = async () => {
+    try {
+      const user = await signInWithEmailAndPassword(
+        auth,
+        email,
+        pass
+      );
+      console.log(user);
+			navigation.navigate("Home");
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+	return (
+		<View style={styles.container}>
+			
+
+			<View style={styles.box}>
+
+				<Text style={styles.text}>Nick:</Text>
+
+				<TextInput
+					type="email"
+					style={styles.input}
+					onChangeText={onChangeEmail}
+					value={email}
+					placeholder="Email"
+					autoComplete="email"
+					keyboardType="email-address"
+					autoCapitalize="none"
+					
+					
+				/>
+
+				<Text style={styles.text}>Senha:</Text>
+				<TextInput
+						style={styles.input}
+						onChangeText={onChangePass}
+						value={pass}
+						placeholder="Senha"
+						secureTextEntry={true}
+						
+					/>
+
+        <Button
+          style={styles.btn} 
+          title="Press me"
+          onPress={login}
+        />
+				<Text style={styles.text}>{user?.email}</Text>
+			</View>
+
+		</View>
+	)
+}
 
 const styles = StyleSheet.create({
 	container: {
@@ -31,36 +100,5 @@ const styles = StyleSheet.create({
 		flex: 0.3
 	}
 })
-
-const Login = ({ navigation }) => {
-	return (
-		<View style={styles.container}>
-			
-
-			<View style={styles.box}>
-				<Input
-					labelStyle={styles.label}
-					inputStyle={styles.input}
-					label="Nick"
-					placeholder="Email" 
-				/>
-
-				<Input
-					labelStyle={styles.label}
-					inputStyle={styles.input}
-					label="Senha"
-					placeholder="Senha" 
-				/>
-
-        <Button
-          style={styles.btn} 
-          title="Press me"
-          onPress={() => navigation.navigate("Home")}
-        />
-			</View>
-
-		</View>
-	)
-}
 
 export default Login;

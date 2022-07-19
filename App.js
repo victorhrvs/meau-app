@@ -4,6 +4,7 @@ import Login from './src/pages/login.js';
 import NewPerson from './src/pages/person/new.js'
 import Start from './src/pages/start.js'
 import Home from './src/pages/home.js'
+import Profile from './src/pages/person/profile.js'
 
 const { Navigator, Screen } = createNativeStackNavigator();
 
@@ -13,6 +14,7 @@ function AppStack() {
       <Screen name="Start" component={Start}/>
       <Screen name="Login" component={Login} />
       <Screen name="Cadastro Pessoa" component={NewPerson} />
+      <Screen name="Perfil" component={Profile} />
       <Screen name="Home" component={Home}/>
     </Navigator>
   );

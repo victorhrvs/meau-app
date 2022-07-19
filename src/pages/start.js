@@ -54,6 +54,12 @@ const Start = ({ navigation }) => {
           title="Cadastrar"
           onPress={() => navigation.navigate("Cadastro Pessoa")}
         />
+
+				<Button
+          style={styles.btn} 
+          title="Perfil"
+          onPress={() => navigation.navigate("Perfil")}
+        />
 			</View>
 
 		</View>
