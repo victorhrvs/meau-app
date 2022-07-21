@@ -1,4 +1,4 @@
-import { db } from '../../firebase.config.js';
+import { db } from "../../firebase.config.js";
 
 import {
   collection,
@@ -10,30 +10,16 @@ import {
   doc,
 } from "firebase/firestore";
 
-const userCollectionRef = collection(db, "users");
-class UserDataService {
-  addUsers = (newUser) => {
-    return addDoc(userCollectionRef, newUser);
-  };
+//const userCollectionRef = collection(db, "users");
 
-  updateUser = (id, updatedUser) => {
-    const userDoc = doc(db, "users", id);
-    return updateDoc(userDoc, updatedUser);
-  };
+const getUser = async (id) => {
+  const userDoc = doc(db, "users", id);
+  return getDoc(userDoc);
+};
 
-  deleteUser = (id) => {
-    const userDoc = doc(db, "users", id);
-    return deleteDoc(userDoc);
-  };
+const updateUser = async (id, updatedUser) => {
+  const userDoc = doc(db, "users", id);
+  return updateDoc(userDoc, updatedUser);
+};
 
-  getAllUsers = () => {
-    return getDocs(userCollectionRef);
-  };
-
-  getUser = (id) => {
-    const userDoc = doc(db, "users", id);
-    return getDoc(userDoc);
-  };
-}
-
-export default new UserDataService();
+export { getUser, updateUser };
