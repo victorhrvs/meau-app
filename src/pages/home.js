@@ -35,15 +35,7 @@ const styles = StyleSheet.create({
 })
 
 const Login = ({ navigation }) => {
-	const [user, setUser] = React.useState({});	
 
-	onAuthStateChanged(auth, (currentUser) => {
-    setUser(currentUser);
-  });
-
-	const logout = async () => {
-    await signOut(auth);
-  };
 
 	return (
 		<View style={styles.container}>

@@ -1,15 +1,14 @@
-import React from "react";
+import React, {useContext} from "react";
 import { View, Text, Button, StyleSheet, TextInput } from "react-native";
 import { signInWithEmailAndPassword, onAuthStateChanged } from "firebase/auth";
 import { auth } from "../../firebase.config.js";
-import { useState } from "react";
 
 
 const Login = ({ navigation }) => {
 
 	const [email, onChangeEmail] = React.useState("");
 	const [pass, onChangePass] = React.useState(null);
-	const [user, setUser] = useState({});
+	const [user, setUser] = React.useState({});
 
 	onAuthStateChanged(auth, (currentUser) => {
     setUser(currentUser);
@@ -23,7 +22,7 @@ const Login = ({ navigation }) => {
         pass
       );
       console.log(user);
-			navigation.navigate("Home");
+			navigation.goBack();
     } catch (error) {
       console.log(error.message);
     }
